@@ -1,0 +1,6 @@
+export const FETCH_POPULAR_GAMES = "FETCH_POPULAR_GAMES";
+export const FETCH_NEW_GAMES = "FETCH_NEW_GAMES";
+export const FETCH_UPCOMING_GAMES = "FETCH_UPCOMING_GAMES";
+export const REQUEST = "_REQUEST";
+export const SUCCESS = "_SUCCESS";
+export const FAILURE = "_FAILURE";
