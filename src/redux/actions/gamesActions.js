@@ -22,4 +22,29 @@ export const loadGames = () => async (dispatch) => {
   } catch (error) {
     dispatch({ type: FETCH_POPULAR_GAMES + FAILURE, popularGamesError: error });
   }
+
+  dispatch({ type: FETCH_NEW_GAMES + REQUEST });
+  try {
+    const newGamesData = await loadPopularGamesAPI();
+    dispatch({
+      type: FETCH_NEW_GAMES + SUCCESS,
+      payload: newGamesData,
+    });
+  } catch (error) {
+    dispatch({ type: FETCH_NEW_GAMES + FAILURE, newGamesError: error });
+  }
+
+  dispatch({ type: FETCH_UPCOMING_GAMES + REQUEST });
+  try {
+    const upcomingGamesData = await loadPopularGamesAPI();
+    dispatch({
+      type: FETCH_UPCOMING_GAMES + SUCCESS,
+      payload: upcomingGamesData,
+    });
+  } catch (error) {
+    dispatch({
+      type: FETCH_UPCOMING_GAMES + FAILURE,
+      upcomingGamesError: error,
+    });
+  }
 };

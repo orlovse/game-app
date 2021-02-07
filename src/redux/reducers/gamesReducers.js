@@ -44,7 +44,7 @@ export const gamesReducer = (state = initialState, action) => {
     case FETCH_NEW_GAMES + SUCCESS:
       return {
         ...state,
-        newGames: action.payload.newGamesData,
+        newGames: action.payload.data.results,
         newGamesLoading: false,
       };
     case FETCH_NEW_GAMES + FAILURE:
@@ -59,7 +59,7 @@ export const gamesReducer = (state = initialState, action) => {
     case FETCH_UPCOMING_GAMES + SUCCESS:
       return {
         ...state,
-        upcomingGames: action.payload.upcomingGamesData,
+        upcomingGames: action.payload.data.results,
         upcomingGamesLoading: false,
       };
     case FETCH_UPCOMING_GAMES + FAILURE:

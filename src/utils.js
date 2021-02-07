@@ -22,3 +22,4 @@ const currentDay = getCurrentDay();
 
 export const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 export const lastYearDate = `${currentYear - 1}-${currentMonth}-${currentDay}`;
+export const nextYearDate = `${currentYear + 1}-${currentMonth}-${currentDay}`;
