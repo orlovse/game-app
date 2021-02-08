@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { loadDetails } from "../redux/actions/detailAction";
 
 export const Game = ({ game }) => {
+  const dispatch = useDispatch();
+  const loadDetailsHandler = () => {
+    if (game) {
+      dispatch(loadDetails(game.id));
+    }
+  };
+
   let header = <div>Header loading</div>;
   let date = <div>Date loading</div>;
   let img = <div>Image loading</div>;
@@ -14,7 +23,7 @@ export const Game = ({ game }) => {
   }
 
   return (
-    <StyledGame>
+    <StyledGame onClick={loadDetailsHandler}>
       {header}
       {date}
       {img}

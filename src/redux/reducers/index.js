@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
-import { gamesReducer } from "./gamesReducers";
+import { gamesReducer } from "./gamesReducer";
+import { detailReducer } from "./detailReducer";
 
-export default combineReducers({ games: gamesReducer });
+export default combineReducers({ games: gamesReducer, details: detailReducer });
