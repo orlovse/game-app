@@ -2,12 +2,14 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { loadDetails } from "../redux/actions/detailAction";
+import { Link } from "react-router-dom";
 
 export const Game = ({ game }) => {
   const dispatch = useDispatch();
   const loadDetailsHandler = () => {
     if (game) {
       dispatch(loadDetails(game.id));
+      document.body.style.overflow = "hidden";
     }
   };
 
@@ -24,9 +26,11 @@ export const Game = ({ game }) => {
 
   return (
     <StyledGame onClick={loadDetailsHandler}>
-      {header}
-      {date}
-      {img}
+      <Link to={`/game/${game?.id}`}>
+        {header}
+        {date}
+        {img}
+      </Link>
     </StyledGame>
   );
 };
@@ -37,6 +41,7 @@ const StyledGame = styled(motion.div)`
   text-align: center;
   border-radius: 1rem;
   overflow: hidden;
+  cursor: pointer;
   img {
     width: 100%;
     height: 40vh;
