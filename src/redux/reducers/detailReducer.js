@@ -1,9 +1,18 @@
-import { FETCH_GAME_DETAILS, REQUEST, SUCCESS, FAILURE } from "../constants";
+import {
+  FETCH_GAME_DETAILS,
+  REQUEST,
+  SUCCESS,
+  FAILURE,
+  FETCH_GAME_SCREENSHOT,
+} from "../constants";
 
 const initialState = {
   gameDetails: {},
-  loading: false,
-  error: null,
+  screenshots: {},
+  loadingDetails: false,
+  loadingScreenshots: false,
+  errorDetails: null,
+  errorScreenshots: null,
 };
 
 export const detailReducer = (state = initialState, action) => {
@@ -11,19 +20,36 @@ export const detailReducer = (state = initialState, action) => {
     case FETCH_GAME_DETAILS + REQUEST:
       return {
         ...state,
-        loading: true,
-        error: null,
+        loadingDetails: true,
+        errorDetails: null,
       };
     case FETCH_GAME_DETAILS + SUCCESS:
       return {
         ...state,
-        loading: false,
+        loadingDetails: false,
         gameDetails: action.payload,
       };
     case FETCH_GAME_DETAILS + FAILURE:
       return {
         ...state,
-        error: action.error,
+        errorDetails: action.error,
+      };
+    case FETCH_GAME_SCREENSHOT + REQUEST:
+      return {
+        ...state,
+        loadingScreenshots: true,
+        errorScreenshots: null,
+      };
+    case FETCH_GAME_SCREENSHOT + SUCCESS:
+      return {
+        ...state,
+        loadingScreenshots: false,
+        screenshots: action.payload,
+      };
+    case FETCH_GAME_SCREENSHOT + FAILURE:
+      return {
+        ...state,
+        errorScreenshots: action.error,
       };
     default:
       return state;
