@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
+import { smallImage } from "../utils";
 
 export const GameDetails = () => {
   const history = useHistory();
@@ -18,6 +19,8 @@ export const GameDetails = () => {
     Object.entries(screenshots).length < 1
   )
     return <div></div>;
+
+  const smallDetailsImg = smallImage(gameDetails.background_image, 1280);
   return (
     <CardShadow className="shadow" onClick={exitDetailsHandler}>
       <Detail>
@@ -36,14 +39,18 @@ export const GameDetails = () => {
           </Info>
         </Stats>
         <Media>
-          <img src={gameDetails.background_image} alt="game-image" />
+          <img src={smallDetailsImg} alt={gameDetails.name} />
         </Media>
         <Description>
           <p>{gameDetails.description_raw}</p>
         </Description>
         <div className="gallery">
           {screenshots.results.map((screenshot) => (
-            <img src={screenshot.image} key={screenshot.id} />
+            <img
+              src={smallImage(screenshot.image, 1280)}
+              key={screenshot.id}
+              alt={gameDetails.name}
+            />
           ))}
         </div>
       </Detail>
