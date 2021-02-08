@@ -10,6 +10,12 @@ export const popularGamesURL = `${BASE_URL}${POPULAR_GAMES}`;
 export const newGamesURL = `${BASE_URL}${NEW_GAMES}`;
 export const upcomingGamesURL = `${BASE_URL}${UPCOMING_GAMES}`;
 
+export const gameDetailsURL = (gameId) => `${BASE_URL}games/${gameId}`;
+export const gameScreenshotURL = (gameId) =>
+  `${BASE_URL}games/${gameId}/screenshots`;
+export const searchGameURL = (gameName) =>
+  `${BASE_URL}games?search=${gameName}&page_size=9`;
+
 export const loadPopularGamesAPI = () => {
   return axios.get(popularGamesURL);
 };
@@ -20,4 +26,16 @@ export const loadNewGamesAPI = () => {
 
 export const loadUpcomingGamesAPI = () => {
   return axios.get(upcomingGamesURL);
+};
+
+export const loadGameDetailsAPI = (gameId) => {
+  return axios.get(gameDetailsURL(gameId));
+};
+
+export const loadGameScreenshotAPI = (gameId) => {
+  return axios.get(gameScreenshotURL(gameId));
+};
+
+export const loadGameSearchAPI = (gameName) => {
+  return axios.get(searchGameURL(gameName));
 };
