@@ -2,12 +2,22 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const Game = ({ game }) => {
-  const { name, released, background_image } = game;
+  let header = <div>Header loading</div>;
+  let date = <div>Date loading</div>;
+  let img = <div>Image loading</div>;
+
+  if (game) {
+    const { name, released, background_image } = game;
+    header = <h3>{name}</h3>;
+    date = <p>{released}</p>;
+    img = <img src={background_image} alt={name} />;
+  }
+
   return (
     <StyledGame>
-      <h3>{name}</h3>
-      <p>{released}</p>
-      <img src={background_image} alt={name} />
+      {header}
+      {date}
+      {img}
     </StyledGame>
   );
 };

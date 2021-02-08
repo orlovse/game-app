@@ -11,31 +11,48 @@ export const Home = () => {
     dispatch(loadGames());
   }, []);
 
-  const { popularGames, newGames, upcomingGames } = useSelector(
-    (state) => state.games
-  );
+  const {
+    popularGames,
+    newGames,
+    upcomingGames,
+    popularGamesLoading,
+    newGamesLoading,
+    upcomingGamesLoading,
+  } = useSelector((state) => state.games);
   return (
     <GameList>
       <h2>Upcoming Games</h2>
-      <Games>
-        {upcomingGames.map((game) => (
-          <Game game={game} key={game.id} />
-        ))}
-      </Games>
+      {upcomingGamesLoading ? (
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => <Game key={item} />)
+      ) : (
+        <Games>
+          {upcomingGames.map((game) => (
+            <Game game={game} key={game.id} />
+          ))}
+        </Games>
+      )}
 
       <h2>Popular Games</h2>
-      <Games>
-        {popularGames.map((game) => (
-          <Game game={game} key={game.id} />
-        ))}
-      </Games>
+      {popularGamesLoading ? (
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => <Game key={item} />)
+      ) : (
+        <Games>
+          {popularGames.map((game) => (
+            <Game game={game} key={game.id} />
+          ))}
+        </Games>
+      )}
 
       <h2>New Games</h2>
-      <Games>
-        {newGames.map((game) => (
-          <Game game={game} key={game.id} />
-        ))}
-      </Games>
+      {newGamesLoading ? (
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => <Game key={item} />)
+      ) : (
+        <Games>
+          {newGames.map((game) => (
+            <Game game={game} key={game.id} />
+          ))}
+        </Games>
+      )}
     </GameList>
   );
 };
